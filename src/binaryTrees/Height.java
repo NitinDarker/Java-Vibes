@@ -1,6 +1,7 @@
 // Maximum Height/Depth of a Binary Tree ->
 // A binary tree's maximum depth is the number of nodes along
 // the longest path from the root node down to the farthest leaf node.
+
 package binaryTrees;
 
 import java.util.LinkedList;
@@ -31,9 +32,5 @@ public class Height {
             }
         }
         return height;
-    }
-
-    public static void main(String[] args) {
-
     }
 }
