@@ -1,7 +1,9 @@
+package bitManipulation;
+
 import java.util.ArrayList;
 import java.util.List;
 
-class Solution {
+public class PowerSet {
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         int comb = 0; // Bitwise combinations
