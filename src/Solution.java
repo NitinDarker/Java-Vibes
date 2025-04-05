@@ -1,23 +1,17 @@
-import java.util.ArrayList;
-import java.util.List;
-
+// https://leetcode.com/problems/sum-of-all-subset-xor-totals/description/?envType=daily-question&envId=2025-04-05
 class Solution {
-    public List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> res = new ArrayList<>();
-        int comb = 0; // Bitwise combinations
-        int limit = 1 << nums.length;
-
-        while (comb < limit) {
-            int currComb = comb;
-            List<Integer> subset = new ArrayList<>();
-            for (int num : nums) {
-                int unit = currComb & 1;
-                if (unit == 1) subset.add(num);
-                currComb = currComb >> 1;
-            }
-            comb += 1;
-            res.add(subset);
+    void dfsHelper(int ind, int xorSum, int[] finalSum, int[] nums) {
+        if (ind == nums.length) {
+            finalSum[0] += xorSum;
+            return;
         }
-        return res;
+        dfsHelper(ind+1, xorSum^nums[ind], finalSum, nums); // Take
+        dfsHelper(ind+1, xorSum, finalSum, nums); // Not Take
+    }
+
+    public int subsetXORSum(int[] nums) {
+        int[] finalSum = {0};
+        dfsHelper(0, 0, finalSum, nums);
+        return finalSum[0];
     }
 }
