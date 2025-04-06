@@ -42,11 +42,11 @@ public class NQueensMulti {
     public static int nQueens(int n) throws InterruptedException {
         AtomicInteger solutions = new AtomicInteger();
         List<Thread> threads = new ArrayList<>();
-        int safeSpots = (1 << n) - 1;
 
+        int safeSpots = (1 << n) - 1;
         int row = 0;
         int badCol = 0, dig1 = 0, dig2 = 0;
-        safeSpots = safeSpots & ~(badCol | dig1 | dig2);
+//        safeSpots = safeSpots & ~(badCol | dig1 | dig2);
 
         while (safeSpots > 0) {
             int pos = safeSpots & -safeSpots;
@@ -56,13 +56,15 @@ public class NQueensMulti {
             t.start();
         }
 
-        for (Thread t : threads) t.join(); // Wait for all threads to finish
+        for (Thread t : threads) t.join();
         return solutions.get();
     }
 
     public static void main(String[] args) throws InterruptedException {
         Instant start = Instant.now();
+
         System.out.println(nQueens(18));
+
         Instant end = Instant.now();
         Duration time = Duration.between(start, end);
         System.out.println("Time Taken: " + time.toMillis() + "ms");
