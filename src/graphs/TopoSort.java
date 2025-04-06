@@ -1,7 +1,9 @@
+package graphs;
+
 import java.util.ArrayList;
 import java.util.Stack;
 
-class Solution {
+public class TopoSort {
     private static ArrayList<ArrayList<Integer>> convertAdj(int[][] edges, int V) {
         ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
         for (int i = 0; i < V; i++) {
