@@ -63,7 +63,7 @@ public class NQueensMulti {
     public static void main(String[] args) throws InterruptedException {
         Instant start = Instant.now();
 
-        System.out.println(nQueens(18));
+        System.out.println(nQueens(16));
 
         Instant end = Instant.now();
         Duration time = Duration.between(start, end);
