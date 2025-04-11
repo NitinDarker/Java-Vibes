@@ -1,9 +1,12 @@
 package backtracking;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
 class MyTask implements Runnable {
@@ -57,16 +60,25 @@ public class NQueensMulti {
         }
 
         for (Thread t : threads) t.join();
+        try (FileWriter writer = new FileWriter("src/backtracking/N-Queen.txt")) {
+            writer.write(Integer.toString(solutions.get()));
+        } catch(IOException e) {
+            System.out.println("YOU SUCK");
+        }
         return solutions.get();
     }
 
     public static void main(String[] args) throws InterruptedException {
         Instant start = Instant.now();
 
-        System.out.println(nQueens(16));
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the value of n = ");
+        int n = sc.nextInt();
+
+        System.out.println(nQueens(n));
 
         Instant end = Instant.now();
         Duration time = Duration.between(start, end);
-        System.out.println("Time Taken: " + time.toMillis() + "ms");
+        System.out.println("Time Taken: " + time.toSeconds() + "s (" + time.toMillis() + "ms)");
     }
 }
