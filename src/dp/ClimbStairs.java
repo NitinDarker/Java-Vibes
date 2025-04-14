@@ -1,4 +1,6 @@
-class Solution {
+package dp;
+
+public class ClimbStairs {
     public int climbStairs(int n) {
         int prev = 1;
         int curr = 1;
