@@ -74,7 +74,7 @@ public class NQueenGPT {
 //        Scanner sc = new Scanner(System.in);
 //        System.out.print("Enter the value of n = ");
 //        int n = sc.nextInt();
-        int n = 17;
+        int n = 16;
         System.out.println(nQueens(n));
 
         Instant end = Instant.now();
